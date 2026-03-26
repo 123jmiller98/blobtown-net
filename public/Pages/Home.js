@@ -1,5 +1,5 @@
 
-import Navigation from './Navigation.js';
+import Navigation from '/Navigation.js';
 
 export default class Home extends Navigation
 {

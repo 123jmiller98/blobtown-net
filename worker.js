@@ -7,9 +7,9 @@ addEventListener('fetch', event => {
 async function handleEvent(event) {
   try {
     let response = await getAssetFromKV(event);
-
-    // Ensure JS files are served as modules
     const url = new URL(event.request.url);
+
+    // Force .js files to be served with the right MIME type
     if (url.pathname.endsWith('.js')) {
       response = new Response(await response.text(), {
         headers: { 'Content-Type': 'application/javascript' }
