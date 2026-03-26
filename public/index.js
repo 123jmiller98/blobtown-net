@@ -15,12 +15,14 @@ export async function navigatePages(currentPage)
     content.innerHTML = "";
 
     try {
-        const module = await import(currentPage.url);
+        const moduleURL = new URL(currentPage.url, window.location.origin).toString();
+        const module = await import(moduleURL);
 
         new module.default(currentPage);
 
     } catch(ex)
     {
+        console.error("Failed to load module:", ex);
         window.alert(ex);
     }
 
