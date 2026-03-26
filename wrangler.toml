@@ -1,6 +1,6 @@
-name = "blobtown-net"              # matches your Worker name
-main = "worker.js"                 # entry-point of your Worker
-compatibility_date = "2026-03-26" # today’s date or whenever you want to freeze CF API behavior
+name = "blobtown-net"
+main = "worker.js"
+compatibility_date = "2026-02-19"
 
 [site]
-bucket = "./public"               # folder with index.html, JS, CSS, etc.
+bucket = "./public"   # must point to the folder with index.html

@@ -251,7 +251,7 @@
   }, "jsonError");
   var middleware_miniflare3_json_error_default = jsonError;
 
-  // .wrangler/tmp/bundle-Iwmfyw/middleware-insertion-facade.js
+  // .wrangler/tmp/bundle-TJDUAO/middleware-insertion-facade.js
   __facade_registerInternal__([middleware_ensure_req_body_drained_default, middleware_miniflare3_json_error_default]);
 
   // node_modules/@cloudflare/kv-asset-handler/dist/index.js
@@ -629,15 +629,11 @@
   });
   async function handleEvent(event) {
     try {
-      return await getAssetFromKV(event, {
-        mapRequestToAsset: /* @__PURE__ */ __name((req) => {
-          const url = new URL(req.url);
-          if (url.pathname === "/") {
-            return new Request("/index.html", req);
-          }
-          return req;
-        }, "mapRequestToAsset")
-      });
+      const url = new URL(event.request.url);
+      if (url.pathname === "/") {
+        return await getAssetFromKV(event, { mapRequestToAsset: /* @__PURE__ */ __name((req) => new Request(new URL("/index.html", req.url).toString(), req), "mapRequestToAsset") });
+      }
+      return await getAssetFromKV(event);
     } catch (err) {
       return new Response("Not found", { status: 404 });
     }

@@ -6,17 +6,12 @@ addEventListener('fetch', event => {
 
 async function handleEvent(event) {
   try {
-    // Pass the request through KV asset handler
-    return await getAssetFromKV(event, {
-      mapRequestToAsset: req => {
-        // Serve index.html for root requests
-        const url = new URL(req.url);
-        if (url.pathname === '/') {
-          return new Request('/index.html', req);
-        }
-        return req;
-      }
-    });
+    // Map root "/" to "/index.html"
+    const url = new URL(event.request.url);
+    if (url.pathname === "/") {
+      return await getAssetFromKV(event, { mapRequestToAsset: req => new Request(new URL('/index.html', req.url).toString(), req) });
+    }
+    return await getAssetFromKV(event);
   } catch (err) {
     return new Response('Not found', { status: 404 });
   }
