@@ -629,11 +629,15 @@
   });
   async function handleEvent(event) {
     try {
+      let response = await getAssetFromKV(event);
       const url = new URL(event.request.url);
-      if (url.pathname === "/") {
-        return await getAssetFromKV(event, { mapRequestToAsset: /* @__PURE__ */ __name((req) => new Request(new URL("/index.html", req.url).toString(), req), "mapRequestToAsset") });
+      if (url.pathname.endsWith(".js")) {
+        response = new Response(await response.text(), {
+          status: 200,
+          headers: { "Content-Type": "application/javascript" }
+        });
       }
-      return await getAssetFromKV(event);
+      return response;
     } catch (err) {
       return new Response("Not found", { status: 404 });
     }

@@ -6,12 +6,18 @@ addEventListener('fetch', event => {
 
 async function handleEvent(event) {
   try {
-    // Map root "/" to "/index.html"
+    let response = await getAssetFromKV(event);
+
+    // Fix MIME type for JS modules
     const url = new URL(event.request.url);
-    if (url.pathname === "/") {
-      return await getAssetFromKV(event, { mapRequestToAsset: req => new Request(new URL('/index.html', req.url).toString(), req) });
+    if (url.pathname.endsWith('.js')) {
+      response = new Response(await response.text(), {
+        status: 200,
+        headers: { 'Content-Type': 'application/javascript' },
+      });
     }
-    return await getAssetFromKV(event);
+
+    return response;
   } catch (err) {
     return new Response('Not found', { status: 404 });
   }
