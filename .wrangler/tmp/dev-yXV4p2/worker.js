@@ -633,7 +633,6 @@
       const url = new URL(event.request.url);
       if (url.pathname.endsWith(".js")) {
         response = new Response(await response.text(), {
-          status: 200,
           headers: { "Content-Type": "application/javascript" }
         });
       }

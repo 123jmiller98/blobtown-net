@@ -8,12 +8,11 @@ async function handleEvent(event) {
   try {
     let response = await getAssetFromKV(event);
 
-    // Fix MIME type for JS modules
+    // Ensure JS files are served as modules
     const url = new URL(event.request.url);
     if (url.pathname.endsWith('.js')) {
       response = new Response(await response.text(), {
-        status: 200,
-        headers: { 'Content-Type': 'application/javascript' },
+        headers: { 'Content-Type': 'application/javascript' }
       });
     }
 
