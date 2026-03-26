@@ -1,7 +1,6 @@
-name = "blobtown-worker"          # match current project
-main = "worker.js"
-compatibility_date = "2026-03-26" # update to today
+name = "blobtown-net"              # matches your Worker name
+main = "worker.js"                 # entry-point of your Worker
+compatibility_date = "2026-03-26" # today’s date or whenever you want to freeze CF API behavior
 
 [site]
-bucket = "./public"
-entry-point = "workers-site"      # tells Wrangler where your Worker site code lives
+bucket = "./public"               # folder with index.html, JS, CSS, etc.
