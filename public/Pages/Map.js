@@ -13,6 +13,8 @@ export default class Map extends Navigation
         const content = document.getElementById('content');
        // content.innerHTML = ''; // clear old content
         content.innerHTML = '<h1>WOW! Map loaded dynamically.</h1>';
+
+        // Test comment
     
     }
 
