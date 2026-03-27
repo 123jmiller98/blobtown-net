@@ -14,7 +14,7 @@ export default class Map extends Navigation
        // content.innerHTML = ''; // clear old content
         content.innerHTML = '<h1>WOW! Map loaded dynamically.</h1>';
 
-        // Test comment for PR
+        // Test comment for PR #2
     
     }
 
