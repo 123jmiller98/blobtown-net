@@ -9,13 +9,9 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 
-
-
 export default class Index
 {
 
-
-    
     // Navigation controller function
     async navigatePages(currentPage)
     {
@@ -31,7 +27,6 @@ export default class Index
             console.error("Failed to load module:", ex);
             window.alert(ex);
         }
-
 
     }   
 }
