@@ -5,7 +5,7 @@ window.addEventListener("DOMContentLoaded", () => {
     navigatePages(PAGES.HOME);
 });
 
-import { PAGES } from '/Pages/Navigation.js';
+import { PAGES } from './Pages/Navigation.js';
 
 
 // Navigation controller function

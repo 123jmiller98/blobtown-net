@@ -251,7 +251,7 @@
   }, "jsonError");
   var middleware_miniflare3_json_error_default = jsonError;
 
-  // .wrangler/tmp/bundle-SQm8CK/middleware-insertion-facade.js
+  // .wrangler/tmp/bundle-rGXV3r/middleware-insertion-facade.js
   __facade_registerInternal__([middleware_ensure_req_body_drained_default, middleware_miniflare3_json_error_default]);
 
   // node_modules/@cloudflare/kv-asset-handler/dist/index.js
@@ -625,22 +625,13 @@
 
   // worker.js
   addEventListener("fetch", (event) => {
-    event.respondWith(handleEvent(event));
-  });
-  async function handleEvent(event) {
     try {
-      let response = await getAssetFromKV(event);
-      const url = new URL(event.request.url);
-      if (url.pathname.endsWith(".js")) {
-        response = new Response(await response.text(), {
-          headers: { "Content-Type": "application/javascript" }
-        });
-      }
-      return response;
-    } catch (err) {
-      return new Response("Not found", { status: 404 });
+      event.respondWith(getAssetFromKV(event));
+    } catch (e) {
+      event.respondWith(
+        new Response("404 Not Found", { status: 404 })
+      );
     }
-  }
-  __name(handleEvent, "handleEvent");
+  });
 })();
 //# sourceMappingURL=worker.js.map
