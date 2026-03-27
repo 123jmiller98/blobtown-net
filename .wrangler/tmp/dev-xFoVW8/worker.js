@@ -251,7 +251,7 @@
   }, "jsonError");
   var middleware_miniflare3_json_error_default = jsonError;
 
-  // .wrangler/tmp/bundle-rGXV3r/middleware-insertion-facade.js
+  // .wrangler/tmp/bundle-Us7dkn/middleware-insertion-facade.js
   __facade_registerInternal__([middleware_ensure_req_body_drained_default, middleware_miniflare3_json_error_default]);
 
   // node_modules/@cloudflare/kv-asset-handler/dist/index.js

@@ -1,14 +1,12 @@
 
 // Const pages. Update pages here
+
+import Index from "../index.js";
+
 //TODO: UPDATE WITH CURRENT ICONS
 export const PAGES = Object.freeze({
-    HOME:       { id: "home", label: "Home", icon: "./Resources/java-icon.png", url: "./Pages/home.js" },
-    CSHARP:     { id: "csharp", label: "C#", icon: "./Resources/java-icon.png", url: "./Pages/csharp.js" },
-    JAVA:       { id: "java", label: "Java", icon: "./Resources/java-icon.png", url: "./Pages/java.js" },
-    PYTHON:     { id: "python", label: "Python", icon: "./Resources/java-icon.png", url: "./Pages/python.js" },
-    CPP:        { id: "cpp", label: "C++", icon: "./Resources/java-icon.png", url: "./Pages/cpp.js" },
-    SQL:        { id: "sql", label: "SQL", icon: "./Resources/java-icon.png", url: "./Pages/sql.js" },
-    JAVASCRIPT: { id: "js", label: "JavaScript", icon: "./Resources/java-icon.png", url: "./Pages/js.js" }
+    HOME:       { id: "home", label: "Home", icon: "./Resources/java-icon.png", url: "./Pages/Home.js" },
+    MAP:        { id: "map", label: "Map", icon: "./Resources/java-icon.png", url: "./Pages/Map.js" }
 });
 
 
@@ -79,7 +77,8 @@ export default class Navigation
             button.appendChild(buttonIcon)
 
             button.addEventListener("click", ()=> {
-                navigatePages(page);
+                const index = new Index();
+                index.navigatePages(page);
             });
 
             nav.appendChild(button);
