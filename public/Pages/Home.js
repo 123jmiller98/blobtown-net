@@ -9,10 +9,11 @@ export default class Home extends Navigation
          this.render();
     }
 
+    // Placeholder
     render() {
         
         const content = document.getElementById('content');
-        content.innerHTML = '<h1>Hi! Home loaded dynamically.</h1>';
+        content.innerHTML = '<h1>Welcome to BlobTown</h1>';
     
     }
 

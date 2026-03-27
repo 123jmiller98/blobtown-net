@@ -4,7 +4,7 @@ import { PAGES } from './Pages/Navigation.js';
 
 // Call render navigation on page load
 window.addEventListener("DOMContentLoaded", () => {
-   const index = new Index();
+    const index = new Index();
     index.navigatePages(PAGES.HOME);
 });
 
