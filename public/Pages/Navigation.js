@@ -1,12 +1,11 @@
 
-// Const pages. Update pages here
-
 import Index from "../index.js";
 
+// Const pages. Update pages here
 //TODO: UPDATE WITH CURRENT ICONS
 export const PAGES = Object.freeze({
     HOME:       { id: "home", label: "Home", icon: "todo-add", url: "./Pages/Home.js" },
-    MAP:        { id: "map", label: "Map", icon: "todo-add", url: "./Pages/Map.js" }
+    MAP:        { id: "map", label: "Map", icon: "todo-add", url: "./Pages/Map.js", mapUrl: "http://136.34.178.214:24388/#" }
 });
 
 
@@ -15,14 +14,25 @@ export default class Navigation
 
     constructor(currentPage)
     {
-        this.title = currentPage;
-        this.currentPage = currentPage;
-       //this.menuOpen = false;
+        // Set title
+        document.title = currentPage.label;
 
-        this.renderSideBar();
+        // Set path
+        // TODO: THIS BREAKS THE RELOAD BUTTON
+        // FIX THIS
+        const blobTownPath = `/${currentPage.id}`;
+        if (window.location.pathname !== blobTownPath)
+        {
+            history.pushState({}, currentPage.label, blobTownPath);
+        }
+
+        
+        this.currentPage = currentPage;
+
+        this.renderNavBar();
     }
 
-    renderSideBar(menuOpen = false)
+    renderNavBar(menuOpen = false)
     {
 
         // Gets navBar
@@ -33,7 +43,7 @@ export default class Navigation
 
         // create new element
         let nav = document.createElement("nav");
-        nav.className = "sidebar";
+        nav.className = "navbar";
 
         // Load each page
         Object.values(PAGES).forEach(page => {
@@ -60,4 +70,5 @@ export default class Navigation
 
     }
 
+    
 }
