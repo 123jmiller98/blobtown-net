@@ -12,7 +12,6 @@ export default class Home extends Navigation
     render() {
         
         const content = document.getElementById('content');
-       // content.innerHTML = ''; // clear old content
         content.innerHTML = '<h1>Hi! Home loaded dynamically.</h1>';
     
     }
