@@ -2,11 +2,39 @@
    
 import { PAGES } from './Pages/Navigation.js';
 
-// Call render navigation on page load
+// Event listener to Call render navigation on page load or reload
 window.addEventListener("DOMContentLoaded", () => {
+    
+    // Determines the correct page to load
+    const currentPage = determineCurrentPage();
+    
+    // loads page
     const index = new Index();
-    index.navigatePages(PAGES.HOME);
+    index.navigatePages(currentPage);
+    
 });
+
+// Event Listener for page navigation arrows
+window.addEventListener("popstate", () => {
+    
+    // Determines the correct page to load
+    const currentPage = determineCurrentPage();
+    
+    // loads page
+    const index = new Index();
+    index.navigatePages(currentPage);
+});
+
+
+function determineCurrentPage()
+    {
+        // Determines the /path || Defaults to home if invalid
+        const path = window.location.pathname;
+        const currentPage = Object.values(PAGES).find(p => `/${p.id}`=== path) || PAGES.HOME;
+
+        // Returns current page
+        return currentPage;
+    }
 
 
 export default class Index
