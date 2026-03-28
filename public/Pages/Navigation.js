@@ -5,7 +5,7 @@ import Index from "../index.js";
 //TODO: UPDATE WITH CURRENT ICONS
 export const PAGES = Object.freeze({
     HOME:       { id: "home", label: "Home", icon: "todo-add", url: "./Pages/Home.js" },
-    MAP:        { id: "map", label: "Map", icon: "todo-add", url: "./Pages/Map.js", mapUrl: "http://136.34.178.214:24388/#" }
+    MAP:        { id: "map", label: "Map", icon: "todo-add", url: "./Pages/Map.js", mapUrl: "https://x9f2k8j3l0q7w1y.blobtown.net/" }
 });
 
 
