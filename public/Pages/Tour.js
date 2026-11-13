@@ -7,6 +7,8 @@ export default class Tour extends Navigation {
     this.renderHeader();
     this.renderLatestTourVideo();
     this.renderSideBar();
+
+    // wilbungalo
     
   }
 
